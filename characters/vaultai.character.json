@@ -157,10 +157,10 @@
             "financial focus only",
             "pragmatic with a focus on actionable insights"
         ],
-        "post": [
+        "post": [],
+        "chat": [
             "informative with precise recommendations",
             "avoids unnecessary elaboration"
-        ],
-        "chat": []
+        ]
     }
 }

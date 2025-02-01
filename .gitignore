@@ -39,8 +39,11 @@ timeline_cache.json
 
 *.sqlite
 
+<<<<<<< HEAD
 characters/secrets.json
 
+=======
+>>>>>>> cf498752f4ee2282f026663a6e184b34ef8471cc
 packages/core/src/providers/cache
 packages/core/src/providers/cache/*
 cache/*
