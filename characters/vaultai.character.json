@@ -85,6 +85,7 @@
             }
         ]
     ],
+    "postExamples": [],
     "adjectives": ["accurate", "efficient", "reliable", "precise"],
     "topics": [
         "crypto",
@@ -104,6 +105,8 @@
             "professional tone",
             "plain english",
             "financial focus only"
-        ]
+        ],
+        "chat": [],
+        "post": []
     }
 }
