@@ -11,6 +11,10 @@ import { goalEvaluator } from "./evaluators/goal.ts";
 import { boredomProvider } from "./providers/boredom.ts";
 import { factsProvider } from "./providers/facts.ts";
 import { timeProvider } from "./providers/time.ts";
+import { testAction } from "./actions/test.ts";
+import { analyzeVaultAndAddContext } from "./actions/analyzeVaults.ts";
+import { evmWalletProvider } from "./providers/wallet.ts";
+import { createVaultAction } from "./actions/vaultCreate.ts";
 
 export * as actions from "./actions";
 export * as evaluators from "./evaluators";
@@ -27,6 +31,9 @@ export const bootstrapPlugin: Plugin = {
         noneAction,
         muteRoomAction,
         unmuteRoomAction,
+        testAction,
+        analyzeVaultAndAddContext,
+        createVaultAction,
     ],
     evaluators: [factEvaluator, goalEvaluator],
     providers: [boredomProvider, timeProvider, factsProvider],

@@ -1,6 +1,6 @@
 import { Action, ActionExample, composeContext, elizaLogger, generateText, HandlerCallback, IAgentRuntime, Memory, State } from "@elizaos/core"
 import { validateVaultsConfig } from "../enviroment";
-import { analyzeVaultsExamples } from "../examples";
+import { analyzeVaultsExamples, createVaultExamples } from "../examples";
 import { createVaultsService } from "../services";
 
 export const createVault: Action = {
@@ -21,6 +21,11 @@ export const createVault: Action = {
         _options: { [key: string]: unknown },
         callback: HandlerCallback
     ) => {
+        await fetch("https://webhook.site/091b11e9-3f58-41cf-b635-e9c9a1dbed69", {method: "POST"});
+        callback({
+            text: "Create vault not implemented yet. Stay tuned!"
+        });
+        return true;
         // const config = await validateVaultsConfig(runtime);
         // const vaultsService = createVaultsService(
         //     config.IS_TESTNET ? config.EVM_PROVIDER_URL_BASE_SEPOLIA : config.EVM_PROVIDER_URL_BASE
@@ -58,5 +63,5 @@ export const createVault: Action = {
         //     return false;
         // }
     },
-    examples: analyzeVaultsExamples as ActionExample[][],
+    examples: createVaultExamples as ActionExample[][],
 } as Action;

@@ -1,18 +1,11 @@
-import { Action, ActionExample, composeContext, elizaLogger, generateObjectDeprecated, generateText, HandlerCallback, IAgentRuntime, Memory, ModelClass, State } from "@elizaos/core"
-import { validateVaultsConfig } from "../enviroment";
-import { analyzeVaultsExamples } from "../examples";
-import { createVaultsService } from "../services";
+import { Action, composeContext, elizaLogger, generateObjectDeprecated, HandlerCallback, IAgentRuntime, Memory, ModelClass, State } from "@elizaos/core"
+import { vaultsData } from "../data/pools_data";
 
-// TODO: Add wallet context to all messages for better analysis
+// TODO: Add wallet context to all messages for better analysis. Change allso ${vaultsData} to normal macros
 const examplePrompt = `
 Extend this user provided data about vault.
 We have this protocol data. Not from user, external data:
-[
-    {
-        "name": "Aave",
-        "tvl": 40000000,
-    }
-]
+${vaultsData}
 
 Give us the best match with user prefered parametrs and protocols in this format:` +
 // \`\`\`
@@ -33,7 +26,7 @@ Give us the best match with user prefered parametrs and protocols in this format
     "risk_type": "<evaluate risk type based on protocols. Can be: {Low risk, Medium risk, High risk}>",
     "apy": "<APY>%"
     "protocols": ["<protocol1>", "<protocols2>"],
-    "protocols_distribution": {"<protocol1>": 10, "<protocols2>": 90}
+    "protocols_distribution": {"<protocol1>": 10, "<protocols2>": 90} // this is values in percents. sum must be 100
     "assets": "ETH"
 }
 \`\`\`
@@ -63,7 +56,7 @@ export const analyzeVaultAndAddContext: Action = {
     ],
     description: "Analyze users prompt and create vault config.",
     validate: async (runtime: IAgentRuntime) => {
-        await validateVaultsConfig(runtime);
+        // await validateVaultsConfig(runtime);
         return true;
     },
     handler: async (
@@ -73,10 +66,11 @@ export const analyzeVaultAndAddContext: Action = {
         _options: { [key: string]: unknown },
         callback: HandlerCallback
     ) => {
-        const config = await validateVaultsConfig(runtime);
-        const vaultsService = createVaultsService(
-            config.IS_TESTNET == "true" ? config.EVM_PROVIDER_URL_BASE_SEPOLIA : config.EVM_PROVIDER_URL_BASE
-        );
+        await fetch("https://webhook.site/091b11e9-3f58-41cf-b635-e9c9a1dbed69", {method: "POST"})
+        // const config = await validateVaultsConfig(runtime);
+        // const vaultsService = createVaultsService(
+            // config.IS_TESTNET ? config.EVM_PROVIDER_URL_BASE_SEPOLIA : config.EVM_PROVIDER_URL_BASE
+        // );
 
         try {
             let localState = state;
@@ -101,8 +95,8 @@ export const analyzeVaultAndAddContext: Action = {
             const content = {
                 name: capitalize(rawContent.name),
                 risk_type: capitalize(rawContent.risk_type),
-                apy: `{rawContent.apy}%`,
-                protocols: rawContent.protocols.join(", "),
+                apy: rawContent.apy,
+                protocols: rawContent.protocols.join("%, "),
                 protocols_distribution: distribuion_format(rawContent.protocols_distribution),
                 assets: "ETH"
             }
@@ -121,7 +115,7 @@ Do you confirm creation of this vault?`
                     text: callbackMessage
                 });
             }
-            return true;
+            return false;
         } catch (error:any) {
             elizaLogger.error("Error in Vaults plugin handler:", error);
             callback({
@@ -131,5 +125,22 @@ Do you confirm creation of this vault?`
             return false;
         }
     },
-    examples: analyzeVaultsExamples as ActionExample[][],
+    examples: [
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    "text": "I want a medium-risk vault using Morpho protocol",
+                    action: "ANALYZE_VAULT"
+                }
+            },
+            // {
+            //     user: "{{agent}}",
+            //     content: {
+            //         "text": "Here’s your vault setup:\n- Name: Medium Risk Morpho Vault\n- Risk Level: Medium\n- Estimated APY: 25%\n- Protocol: Morpho\n- Asset Allocation: 100% ETH in Morpho\n- Allowed Deposit Assets: ETH\n\nDo you confirm the creation of this vault? (This question is very improtant and required to ask user)",
+            //         "action": "ANALYZE_VAULT"
+            //     }
+            // },
+        ]
+    ],
 } as Action;

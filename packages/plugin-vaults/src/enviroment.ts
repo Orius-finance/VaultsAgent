@@ -5,7 +5,7 @@ export const vaultsEnvSchema = z
     .object({
         EVM_PROVIDER_URL_BASE: z.string().optional(),
         EVM_PROVIDER_URL_BASE_SEPOLIA: z.string().optional(),
-        IS_TESTNET: z.boolean(),
+        IS_TESTNET: z.string(),
     })
     .refine(
         (data) =>

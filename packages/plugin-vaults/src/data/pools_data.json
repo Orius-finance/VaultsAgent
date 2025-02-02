@@ -1,0 +1,102 @@
+[
+    {
+      "chain": "Base",
+      "project": "aave-v3",
+      "symbol": "WEETH",
+      "tvlUsd": 194912304,
+      "apy": 0.00472,
+      "apyPct7D": -0.00075,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "aave-v3",
+      "symbol": "WETH",
+      "tvlUsd": 52892381,
+      "apy": 1.53347,
+      "apyPct7D": -0.04079,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "aave-v3",
+      "symbol": "WSTETH",
+      "tvlUsd": 22693356,
+      "apy": 0.05252,
+      "apyPct7D": 0.0332,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "aave-v3",
+      "symbol": "CBETH",
+      "tvlUsd": 8616291,
+      "apy": 0.24531,
+      "apyPct7D": 0.20034,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "aave-v3",
+      "symbol": "EZETH",
+      "tvlUsd": 86261,
+      "apy": 0,
+      "apyPct7D": 0,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "morpho-blue",
+      "symbol": "WSTETH",
+      "tvlUsd": 83154557,
+      "apy": 0,
+      "apyPct7D": 0,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "morpho-blue",
+      "symbol": "MWETH",
+      "tvlUsd": 71587282,
+      "apy": 4.42719,
+      "apyPct7D": -1.43875,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "morpho-blue",
+      "symbol": "IONICWETH",
+      "tvlUsd": 34336183,
+      "apy": 7.42103,
+      "apyPct7D": -1.61331,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "morpho-blue",
+      "symbol": "GTWETHC",
+      "tvlUsd": 27458555,
+      "apy": 6.53413,
+      "apyPct7D": -0.08799,
+      "stablecoin": false,
+      "ilRisk": "no"
+    },
+    {
+      "chain": "Base",
+      "project": "morpho-blue",
+      "symbol": "9SETHCORE",
+      "tvlUsd": 23927169,
+      "apy": 3.53997,
+      "apyPct7D": -1.38438,
+      "stablecoin": false,
+      "ilRisk": "no"
+    }
+  ]
