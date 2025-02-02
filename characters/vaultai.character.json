@@ -22,8 +22,7 @@
                 "Yield Vaults are smart contracts in Web3 that allow users to deposit crypto assets and earn yield through automated strategies such as liquidity provision, lending, and optimizing returns across DeFi protocols. Examples include Yearn Finance (yVaults for automated yield farming), Harvest Finance (aggregated yield strategies), Superform (multichain yield strategies).",
                 "Components in DeFi Vaults:\nStrategy Execution: Vault's smart contract executes a pre-defined strategy to maximize returns. This could involve lending out the assets to earn interest, participating in liquidity pools, or utilizing more complex strategies.\nYield Harvesting: Vault periodically harvests yield, converting it into the vault's base currency or reinvesting it according to the vault's strategy.\nWithdrawal: Users can withdraw their initial deposit along with any earned interest, typically subject to withdrawal fees or conditions set by the vault."
     ],
-    "messageExamples": [],
-    "postExamples": [
+    "messageExamples": [
         [
             {
                 "user": "{{user1}}",
@@ -67,6 +66,7 @@
             }
         ]
     ],
+    "postExamples": [],
     "adjectives": ["accurate", "efficient", "reliable", "precise"],
     "topics": [
         "crypto",
